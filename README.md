@@ -1,20 +1,12 @@
-Chrome拡張の雛形
+Github Projects を使い易くするための拡張
 ========================
 
 概要
 -----
 
-これをダウンロードかcloneして、書き換えてください。
-
-
-各種ドキュメント/サンプルページ
------------------------------------
-
-- [使い方](http://qiita.com/waterada/private/f8a53677a46c131a3734)
-- [サンプルページ](https://waterada.github.io/chrome-ex-template/test/example.html)
-- [ChEx.js のドキュメント](ChEx-doc.md)
-- [単体テスト](https://waterada.github.io/chrome-ex-template/test/test.html)
-
+# できること
+- タスクボード上でIssueを選択した時、子Issueが有れば右ペインの詳細に表示する
+- タスクボード上でIssueを選択した時、子Issueがボード上有れば子Issueをハイライトする
 
 License
 -----------------------------------
