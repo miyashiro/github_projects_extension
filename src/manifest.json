@@ -3,7 +3,7 @@
   "description": "Github projectsを使いやすくするためのExtension",
   "version": "0.1",
   "manifest_version": 2,
-  "content_scripts": [{
+    "content_scripts": [{
     "matches": ["https://github.com/*/*/projects/*"],
     "js": ["jquery-2.2.0.min.js", "ChEx.js", "content_script.js"]
   }],
