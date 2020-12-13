@@ -4,12 +4,11 @@ $(function () {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       $.get(mutation.target.getAttribute('data-issue-url'), function(data){
-        var result = data.match(/<a.+data-hovercard-type="issue"[\s\S]+?(<\/div>)[\s\S]+?(<\/div>)/g);
-        //var result = data.match( /<a.+data-hovercard-type="issue"[\s\S]+(<\/div>)/g );
+        var result = data.match(/(?<=div[^\<]+)<a[^\<]+data-hovercard-type="issue"[\s\S]+?(<\/div>)[\s\S]+?(<\/div>)/g);
+        $('.js-project-issue-details-container').removeAttr('style');
         if (result) { 
           var childrenDiv = $.parseHTML('<div id="target-children" style="padding: 20px;" class="border-top">')[0];
           childrenDiv.append($.parseHTML('<div style="font-weight: bold;">子issue</div>')[0]);
-          $('.js-project-issue-details-container').removeAttr('style');
           $.each(result, function(i, txt) {
             var textPart = $.parseHTML(txt)[0];
             var statusPart = $.parseHTML(txt)[2];
