@@ -5,6 +5,7 @@ $(function () {
     mutations.forEach((mutation) => {
       $.get(mutation.target.getAttribute('data-issue-url'), function(data){
         var result = data.match(/(?<=div[^\<]+)<a[^\<]+data-hovercard-type="issue"[\s\S]+?(<\/div>)[\s\S]+?(<\/div>)/g);
+        var parents = data.match(/(?<=<a[^\<]+class="issue-link js-issue-link"[^\<]+href="[^"]+)\/[^\/]+\/\d+(?="[^\<]+#\d+<\/a>)/g);
         $('.js-project-issue-details-container').removeAttr('style');
         if (result) { 
           var childrenDiv = $.parseHTML('<div id="target-children" style="padding: 20px;" class="border-top">')[0];
@@ -25,7 +26,15 @@ $(function () {
           });
           $('.project-comment-title-hover').after(childrenDiv);
         };
-        console.log(result);
+        if (parents) { 
+          $.each(parents, function(i, txt) {
+            var card = $('a[href*="' + txt + '"].js-project-card-issue-link');
+            if (card.length > 0) {
+              card[0].parentElement.setAttribute("style", "background-color: #CCFFCC;");
+            }
+          });
+        };
+        console.log(parents);
       });
     });
   });
